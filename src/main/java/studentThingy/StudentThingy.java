@@ -1,34 +1,34 @@
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ */
 
-package studentThingy;
-
+package com.mycompany.rayyanstuff;
 import java.util.Scanner;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 
 
-public class StudentThingy {
-    public static void main(String[] args) {
+public class RayyanStuff {
+    public static void main(String[] args)throws IOException{
         Scanner temp = new Scanner(System.in);
-        int[] arr = new int[5];
-        String[] name = new String[5];
- 
-        for(int i = 0; i < 5; i++){
-            System.out.println("enter a name");
-            name[i] = temp.nextLine();
-            System.out.println("enter a age");
-            arr[i] = temp.nextInt();
-        }    
+        System.out.println("how many students do you wann add: ");
+        NewClass[] arr = new NewClass[2];
         
-        try{
+        for(int i = 0; i < arr.length; i++){
+            System.out.println("enter a name");
+            String name = temp.nextLine();
+            System.out.println("enter a age");
+            int index = temp.nextInt();
+            temp.nextLine();
+            arr[i] = new NewClass(name,index);
+            
+        }    
         FileWriter file = new FileWriter("students information.txt");
-        for(int x = 0; x <= 5; x++){
-            file.write(name + " " + arr + "\n");
+        for(NewClass student : arr){
+            file.write(student.name + " " + student.index + "\n");
+       
         }
-        }
-        catch (Exception e){
-            e.printStackTrace();
-            System.out.println("no such files");       
-        }
+        file.close();
     }   
 }
